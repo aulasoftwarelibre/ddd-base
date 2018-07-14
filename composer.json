@@ -36,10 +36,5 @@
         "psr-4": {
             "AulaSoftwareLibre\\DDD\\": "src/"
         }
-    },
-  "autoload-dev": {
-    "psr-4": {
-      "AulaSoftwareLibre\\DDD\\Tests\\": "tests/"
     }
-  }
 }

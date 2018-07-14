@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace AulaSoftwareLibre\DDD\Tests\Service\Prooph\Plugin;
+namespace AulaSoftwareLibre\DDD\Service\Prooph\Plugin;
 
 use Doctrine\Common\Collections\Collection;
 

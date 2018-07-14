@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace AulaSoftwareLibre\DDD\Tests\Service\Prooph\Spec;
+namespace AulaSoftwareLibre\DDD\Service\Prooph\Spec;
 
 use Prooph\Common\Messaging\Message;
 
