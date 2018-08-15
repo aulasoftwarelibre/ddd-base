@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace AulaSoftwareLibre\DDD\Domain;
+namespace AulaSoftwareLibre\DDD\BaseBundle\Domain;
 
 use Prooph\Common\Messaging\Message;
 use Prooph\EventSourcing\AggregateChanged;
