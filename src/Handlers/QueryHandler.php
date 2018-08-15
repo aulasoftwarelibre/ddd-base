@@ -11,8 +11,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace AulaSoftwareLibre\DDD\BaseBundle\Application;
+namespace AulaSoftwareLibre\DDD\BaseBundle\Handlers;
 
-interface CommandInterface
+interface QueryHandler
 {
 }

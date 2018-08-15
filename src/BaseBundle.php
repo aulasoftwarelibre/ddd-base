@@ -11,8 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace AulaSoftwareLibre\DDD\BaseBundle\Application;
+namespace AulaSoftwareLibre\DDD\BaseBundle;
 
-interface EventInterface
+use AulaSoftwareLibre\DDD\BaseBundle\DependencyInjection\BaseExtension;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class BaseBundle extends Bundle
 {
+    public function getContainerExtension()
+    {
+        return new BaseExtension();
+    }
 }
