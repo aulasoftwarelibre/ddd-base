@@ -13,5 +13,25 @@
         <service id="Prooph\ServiceBus\CommandBus" alias="prooph_service_bus.default_command_bus" />
         <service id="Prooph\ServiceBus\EventBus" alias="prooph_service_bus.default_event_bus" />
         <service id="Prooph\ServiceBus\QueryBus" alias="prooph_service_bus.default_query_bus" />
+
+        <service id="Prooph\EventStoreBusBridge\EventPublisher">
+            <argument id="prooph_service_bus.default_event_bus" type="service" />
+            <tag name="prooph_event_store.default.plugin" />
+        </service>
+
+        <service id="doctrine.pdo.connection" class="\PDO">
+            <factory service="database_connection" method="getWrappedConnection" />
+        </service>
+
+        <service id="prooph_event_sourcing.aggregate_translator" class="Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator" />
+        <service id="prooph_event_store.single_stream_strategy" class="Prooph\EventStore\Pdo\PersistenceStrategy\PostgresSingleStreamStrategy" />
+
+        <service id="Prooph\EventStore\Pdo\PostgresEventStore">
+            <argument id="prooph_event_store.message_factory" type="service" />
+            <argument id="doctrine.pdo.connection" type="service" />
+            <argument id="prooph_event_store.single_stream_strategy" type="service" />
+        </service>
+
+        <service id="Prooph\EventStore\EventStore" alias="Prooph\EventStore\Pdo\PostgresEventStore" />
     </services>
 </container>

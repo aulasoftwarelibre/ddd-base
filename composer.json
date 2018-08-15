@@ -22,7 +22,9 @@
         "prooph/common": "^4.2",
         "prooph/event-sourcing": "^5.6",
         "prooph/event-store": "^7.3",
+        "prooph/event-store-bus-bridge": "^3.3",
         "prooph/event-store-symfony-bundle": "^0.5",
+        "prooph/pdo-event-store": "^1.9",
         "prooph/service-bus": "^6.2",
         "prooph/service-bus-symfony-bundle": "^0.7.0",
         "webmozart/assert": "^1.3"
