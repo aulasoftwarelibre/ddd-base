@@ -10,12 +10,8 @@
             <tag name="console.command" />
         </service>
 
-        <service id="Prooph\ServiceBus\CommandBus" alias="prooph_service_bus.default_command_bus" />
-        <service id="Prooph\ServiceBus\EventBus" alias="prooph_service_bus.default_event_bus" />
-        <service id="Prooph\ServiceBus\QueryBus" alias="prooph_service_bus.default_query_bus" />
-
-        <service id="Prooph\EventStoreBusBridge\EventPublisher">
-            <argument id="prooph_service_bus.default_event_bus" type="service" />
+        <service id="AulaSoftwareLibre\DDD\BaseBundle\Prooph\EventStoreBusBridge\MessengerEventPublisher">
+            <argument id="messenger.bus.events" type="service" />
             <tag name="prooph_event_store.default.plugin" />
         </service>
 

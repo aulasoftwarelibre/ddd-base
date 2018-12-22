@@ -14,11 +14,12 @@ declare(strict_types=1);
 namespace AulaSoftwareLibre\DDD\BaseBundle;
 
 use AulaSoftwareLibre\DDD\BaseBundle\DependencyInjection\BaseExtension;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class BaseBundle extends Bundle
+final class BaseBundle extends Bundle
 {
-    public function getContainerExtension()
+    public function getContainerExtension(): Extension
     {
         return new BaseExtension();
     }
