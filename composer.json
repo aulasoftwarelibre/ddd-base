@@ -24,6 +24,8 @@
         "prooph/event-store": "^7.3",
         "prooph/event-store-symfony-bundle": "^0.5",
         "prooph/pdo-event-store": "^1.9",
+        "prooph/pdo-snapshot-store": "^1.5",
+        "prooph/snapshotter": "^2.1",
         "symfony/config": "^4.2",
         "symfony/console": "^4.2",
         "symfony/dependency-injection": "^4.2",
