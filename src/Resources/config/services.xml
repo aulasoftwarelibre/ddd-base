@@ -27,7 +27,11 @@
             <argument id="doctrine.pdo.connection" type="service" />
             <argument id="prooph_event_store.single_stream_strategy" type="service" />
         </service>
-
         <service id="Prooph\EventStore\EventStore" alias="Prooph\EventStore\Pdo\PostgresEventStore" />
+
+        <service id="Prooph\SnapshotStore\Pdo\PdoSnapshotStore">
+            <argument id="doctrine.pdo.connection" type="service" />
+        </service>
+        <service id="Prooph\SnapshotStore\SnapshotStore" alias="Prooph\SnapshotStore\Pdo\PdoSnapshotStore" />
     </services>
 </container>
