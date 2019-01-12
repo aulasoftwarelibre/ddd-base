@@ -27,6 +27,10 @@ trait SnapshotTrait
 
     protected function saveSnapshot(AggregateRoot $aggregateRoot)
     {
+        if (!$this->snapshotStore) {
+            return;
+        }
+
         $version = (function () { return $this->version; })->call($aggregateRoot);
         $aggregateId = (function () { return $this->aggregateId(); })->call($aggregateRoot);
 
