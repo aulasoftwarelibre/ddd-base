@@ -28,6 +28,7 @@ trait SnapshotTrait
     protected function saveSnapshot(AggregateRoot $aggregateRoot)
     {
         $version = (function () { return $this->version; })->call($aggregateRoot);
+        $aggregateId = (function () { return $this->aggregateId(); })->call($aggregateRoot);
 
         if (1 !== $version % 20) {
             return;
@@ -36,7 +37,7 @@ trait SnapshotTrait
         $this->snapshotStore->save(
             new Snapshot(
                 AggregateType::fromAggregateRoot($aggregateRoot)->toString(),
-                $aggregateRoot->aggregateId(),
+                $aggregateId,
                 $aggregateRoot,
                 $version,
                 new \DateTimeImmutable('now', new \DateTimeZone('UTC'))
