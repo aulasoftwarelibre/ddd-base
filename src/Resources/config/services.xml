@@ -22,6 +22,18 @@
         <service id="prooph_event_sourcing.aggregate_translator" class="Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator" />
         <service id="prooph_event_store.single_stream_strategy" class="Prooph\EventStore\Pdo\PersistenceStrategy\PostgresSingleStreamStrategy" />
 
+        <service id="AulaSoftwareLibre\DDD\BaseBundle\MessageBus\QueryBus">
+            <argument type="service" id="messenger.bus.queries" />
+        </service>
+
+        <service id="AulaSoftwareLibre\DDD\BaseBundle\MessageBus\CommandBus">
+            <argument type="service" id="messenger.bus.commands"/>
+        </service>
+
+        <service id="AulaSoftwareLibre\DDD\BaseBundle\MessageBus\EventBus">
+            <argument type="service" id="messenger.bus.events"/>
+        </service>
+
         <service id="Prooph\EventStore\Pdo\PostgresEventStore">
             <argument id="prooph_event_store.message_factory" type="service" />
             <argument id="doctrine.pdo.connection" type="service" />
