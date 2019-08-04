@@ -103,7 +103,6 @@ final class MessengerEventPublisher extends AbstractPlugin
 
     private function inTransaction(EventStore $eventStore): bool
     {
-        return $eventStore instanceof TransactionalActionEventEmitterEventStore
-            && $eventStore->inTransaction();
+        return false;
     }
 }

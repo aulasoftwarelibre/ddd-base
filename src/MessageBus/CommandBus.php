@@ -15,6 +15,7 @@ namespace AulaSoftwareLibre\DDD\BaseBundle\MessageBus;
 
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
 class CommandBus
 {
@@ -31,5 +32,13 @@ class CommandBus
     public function dispatch($message): Envelope
     {
         return $this->messageBus->dispatch($message);
+    }
+
+    public function dispatchAfterCurrentBus($message): Envelope
+    {
+        return $this->messageBus->dispatch(
+            (new Envelope($message))
+                ->with(new DispatchAfterCurrentBusStamp())
+        );
     }
 }

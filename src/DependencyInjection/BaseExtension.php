@@ -40,11 +40,12 @@ final class BaseExtension extends Extension implements PrependExtensionInterface
         $config = [];
 
         $config['messenger']['default_bus'] = 'command.bus';
-        $config['messenger']['buses']['command.bus']['middleware']['validation'] = null;
-        $config['messenger']['buses']['command.bus']['middleware']['doctrine_transaction'] = null;
-        $config['messenger']['buses']['event.bus']['middleware']['validation'] = null;
+        $config['messenger']['buses']['command.bus']['middleware'][] = 'validation';
+        $config['messenger']['buses']['command.bus']['middleware'][] = 'doctrine_transaction';
+        $config['messenger']['buses']['event.bus']['middleware'][] = 'validation';
+        $config['messenger']['buses']['event.bus']['middleware'][] = 'doctrine_transaction';
         $config['messenger']['buses']['event.bus']['default_middleware'] = 'allow_no_handlers';
-        $config['messenger']['buses']['query.bus']['middleware']['validation'] = null;
+        $config['messenger']['buses']['query.bus']['middleware'][] = 'validation';
 
         $container->prependExtensionConfig('framework', $config);
 
