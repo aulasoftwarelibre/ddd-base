@@ -11,7 +11,7 @@
         </service>
 
         <service id="AulaSoftwareLibre\DDD\BaseBundle\Prooph\EventStoreBusBridge\MessengerEventPublisher">
-            <argument id="messenger.bus.events" type="service" />
+            <argument id="event.bus" type="service" />
             <tag name="prooph_event_store.default.plugin" />
         </service>
 
@@ -23,15 +23,15 @@
         <service id="prooph_event_store.single_stream_strategy" class="Prooph\EventStore\Pdo\PersistenceStrategy\PostgresSingleStreamStrategy" />
 
         <service id="AulaSoftwareLibre\DDD\BaseBundle\MessageBus\QueryBus">
-            <argument type="service" id="messenger.bus.queries" />
+            <argument type="service" id="query.bus" />
         </service>
 
         <service id="AulaSoftwareLibre\DDD\BaseBundle\MessageBus\CommandBus">
-            <argument type="service" id="messenger.bus.commands"/>
+            <argument type="service" id="command.bus"/>
         </service>
 
         <service id="AulaSoftwareLibre\DDD\BaseBundle\MessageBus\EventBus">
-            <argument type="service" id="messenger.bus.events"/>
+            <argument type="service" id="event.bus"/>
         </service>
 
         <service id="Prooph\EventStore\Pdo\PostgresEventStore">

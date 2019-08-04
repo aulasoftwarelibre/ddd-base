@@ -39,22 +39,25 @@ final class BaseExtension extends Extension implements PrependExtensionInterface
 
         $config = [];
 
-        $config['messenger']['buses']['messenger.bus.commands']['middleware']['doctrine_transaction'] = null;
-        $config['messenger']['buses']['messenger.bus.events']['middleware']['doctrine_transaction'] = null;
-        $config['messenger']['buses']['messenger.bus.queries'] = null;
+        $config['messenger']['default_bus'] = 'command.bus';
+        $config['messenger']['buses']['command.bus']['middleware']['validation'] = null;
+        $config['messenger']['buses']['command.bus']['middleware']['doctrine_transaction'] = null;
+        $config['messenger']['buses']['event.bus']['middleware']['validation'] = null;
+        $config['messenger']['buses']['event.bus']['default_middleware'] = 'allow_no_handlers';
+        $config['messenger']['buses']['query.bus']['middleware']['validation'] = null;
 
         $container->prependExtensionConfig('framework', $config);
 
         $container
             ->registerForAutoconfiguration(CommandHandlerInterface::class)
-            ->addTag('messenger.message_handler', ['bus' => 'messenger.bus.commands']);
+            ->addTag('messenger.message_handler', ['bus' => 'command.bus']);
 
         $container
             ->registerForAutoconfiguration(EventHandlerInterface::class)
-            ->addTag('messenger.message_handler', ['bus' => 'messenger.bus.events']);
+            ->addTag('messenger.message_handler', ['bus' => 'event.bus']);
 
         $container
             ->registerForAutoconfiguration(QueryHandlerInterface::class)
-            ->addTag('messenger.message_handler', ['bus' => 'messenger.bus.queries']);
+            ->addTag('messenger.message_handler', ['bus' => 'query.bus']);
     }
 }
